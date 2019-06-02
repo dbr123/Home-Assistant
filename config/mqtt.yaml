@@ -1,0 +1,4 @@
+broker: !secret cloutmqtt_server
+port: !secret cloudmqtt_port
+username: !secret cloudmqtt_user
+password: !secret cloudmqtt_password

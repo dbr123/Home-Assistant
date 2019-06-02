@@ -1,0 +1,23 @@
+#--------------
+# GROUP
+#--------------
+group:
+  bedrooms_temperature:
+    name: Bedrooms Temperature
+    view: no
+    entities:
+      - sensor.temperature_158d0001fa5dbf
+      - sensor.temperature_158d0001f52cbc
+      - sensor.temperature_158d0001f52fce
+
+#---------
+# Customize
+#---------
+homeassistant:
+  customize:
+    sensor.temperature_158d0001fa5dbf:
+      friendly_name: "Master bedroom"
+    sensor.temperature_158d0001f52cbc:
+      friendly_name: "First child bedroom"
+    sensor.temperature_158d0001f52fce:
+      friendly_name: "Second child bedroom"

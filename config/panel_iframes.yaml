@@ -1,0 +1,8 @@
+configurator:
+  title: Configurator
+  icon: mdi:wrench
+  url: !secret config_panel_url
+terminal:
+    title: Terminal
+    icon: mdi:console
+    url: !secret terminal_panel_url

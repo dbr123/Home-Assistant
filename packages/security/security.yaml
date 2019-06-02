@@ -1,0 +1,88 @@
+#--------------
+# CONTROL PANEL
+#--------------
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+
+#--------------
+# Groups
+#--------------
+group:
+  alarm:
+    name: Alarm
+    view: no
+    entities:
+      - alarm_control_panel.home_alarm
+      - group.all_door_sensor
+      - group.all_motion
+  all_door_sensor:
+    name: All Door Sensor
+    view: no
+    entities:
+      - binary_sensor.door_window_sensor_158d0002045491
+      - binary_sensor.door_window_sensor_158d0002092151
+      - binary_sensor.door_window_sensor_158d00020b5dfa
+      - binary_sensor.door_window_sensor_158d00020b7e71
+  all_motion:
+    name: All Motion
+    view: no
+    entities:
+      - binary_sensor.motion_sensor_158d000236b624
+      - binary_sensor.motion_sensor_158d0002371e67
+
+#---------
+# Customize
+#---------
+homeassistant:
+  customize:
+    binary_sensor.door_window_sensor_158d0002045491:
+      friendly_name: "Window child bedroom one"
+      icon: mdi:door
+    binary_sensor.door_window_sensor_158d0002092151:
+      friendly_name: "Window master bedroom"    
+      icon: mdi:door
+    binary_sensor.door_window_sensor_158d00020b5dfa:
+      friendly_name: "Window living room road"
+      icon: mdi:door
+    binary_sensor.door_window_sensor_158d00020b7e71:
+      friendly_name: "Window child bedroom two"
+      icon: mdi:door
+    binary_sensor.motion_sensor_158d000236b624:
+      friendly_name: "Motion Living room"
+      icon: mdi:run
+    binary_sensor.motion_sensor_158d0002371e67:
+      friendly_name: "Motion corridor"
+      icon: mdi:run
+
+#--------------
+# AUTOMATIONS
+#--------------
+automation:
+  - alias: 'Trigger alarm while armed away'
+    trigger:
+      # DOOR OPENED
+      - platform: state
+        entity_id: group.all_door_sensor
+        to: 'on'
+      # MOTION
+      - platform: state
+        entity_id: group.all_motion
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: armed_away
+    action:
+      service: xiaomi_aqara.play_ringtone
+      entity_id: alarm_control_panel.home_alarm
+  - alias: 'Send notification when alarm triggered'
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.home_alarm
+        to: 'triggered'
+    action:
+      - service: notify.telegram
+        data:
+          title: ALARM
+          message: Alarme triggered !

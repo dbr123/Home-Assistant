@@ -1,0 +1,35 @@
+#################################################################
+#                                                               #
+#                         Automations                           #
+#                                                               #
+#################################################################
+
+automation:
+
+## Create daily snapshot of hassio
+  - alias: Daily Backup at 3AM
+    initial_state: true
+    trigger:
+      platform: time
+      at: '03:00:00'
+    action:
+    - service: hassio.snapshot_full
+      data_template:
+        name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+    
+## Upload snapshot to Dropbox
+  - alias: Upload dropbox 4AM
+    initial_state: true
+    trigger:
+      platform: time
+      at: '04:00:00'
+    action:
+    - service: hassio.addon_stdin
+      data_template:
+        addon: 7be23ff5_dropbox_sync
+        input: {"command":"upload"}
+    - delay: 00:01:00
+    - service: notify.telegram
+      data:
+        title: HASSIO Backup
+        message: Backup is done

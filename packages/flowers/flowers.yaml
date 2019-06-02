@@ -1,0 +1,145 @@
+#---------
+# GROUPS
+#---------
+
+#---------
+# Customize
+#---------
+homeassistant:
+  customize:
+    plant.anthurium_andraeanum:
+      friendly_name: Anthurium andraeanum (Living room)
+      entity_picture: /local/flowers/anthurium_andreanum.jpg
+    plant.stephanotis_floribunda:
+      friendly_name: Stephanotis floribunda (Living room)
+      entity_picture: /local/flowers/stephanotis_floribunda.jpg
+    plant.yucca_elephantipes:
+      friendly_name: Yucca Elephantipes (Living room)
+      entity_picture: /local/flowers/yucca_elephantipes.jpg
+    plant.phalaenopsis:
+      friendly_name: Phalaenopsis (Living room)
+      entity_picture: /local/flowers/phalaenopsis.jpg
+
+#---------
+# Plant
+#---------
+plant:
+  anthurium_andraeanum:
+      sensors:
+        moisture: sensor.anthurium_andraeanum_moisture
+        battery: sensor.anthurium_andraeanum_battery
+        temperature: sensor.anthurium_andraeanum_temperature
+        conductivity: sensor.anthurium_andraeanum_conductivity
+        brightness: sensor.anthurium_andraeanum_light_intensity
+      min_moisture: 23
+      max_moisture: 65
+      min_battery: 15
+      min_conductivity: 500
+      max_conductivity: 2000
+      min_temperature: 15
+      max_temperature: 32
+      min_brightness: 1500
+      max_brightness: 35000
+
+  stephanotis_floribunda:
+      sensors:
+        moisture: sensor.stephanotis_floribunda_moisture
+        battery: sensor.stephanotis_floribunda_battery
+        temperature: sensor.stephanotis_floribunda_temperature
+        conductivity: sensor.stephanotis_floribunda_conductivity
+        brightness: sensor.stephanotis_floribunda_light_intensity
+      min_moisture: 23
+      max_moisture: 65
+      min_battery: 15
+      min_conductivity: 500
+      max_conductivity: 2000
+      min_temperature: 15
+      max_temperature: 32
+      min_brightness: 1500
+      max_brightness: 35000
+
+  yucca_elephantipes:
+      sensors:
+        moisture: sensor.yucca_elephantipes_moisture
+        battery: sensor.yucca_elephantipes_battery
+        temperature: sensor.yucca_elephantipes_temperature
+        conductivity: sensor.yucca_elephantipes_conductivity
+        brightness: sensor.yucca_elephantipes_light_intensity
+      min_moisture: 23
+      max_moisture: 65
+      min_battery: 15
+      min_conductivity: 500
+      max_conductivity: 2000
+      min_temperature: 15
+      max_temperature: 32
+      min_brightness: 1500
+      max_brightness: 35000
+  
+  phalaenopsis:
+      sensors:
+        moisture: sensor.phalaenopsis_moisture
+        battery: sensor.phalaenopsis_battery
+        temperature: sensor.phalaenopsis_temperature
+        conductivity: sensor.phalaenopsis_conductivity
+        brightness: sensor.phalaenopsis_light_intensity
+      min_moisture: 15
+      max_moisture: 65
+      min_battery: 15
+      min_conductivity: 350
+      max_conductivity: 2000
+      min_temperature: 15
+      max_temperature: 32
+      min_brightness: 2000
+      max_brightness: 3000
+
+#---------
+# Sensor
+#---------
+sensor:
+  - platform: miflora
+    mac: !secret flower_miflora_anthurium_mac
+    name: Anthurium andraeanum
+    force_update: false
+    median: 3
+    monitored_conditions:
+      - moisture
+      - light
+      - temperature
+      - conductivity
+      - battery
+  
+  - platform: miflora
+    mac: !secret flower_miflora_stephanotis_mac
+    name: Stephanotis floribunda
+    force_update: false
+    median: 3
+    monitored_conditions:
+      - moisture
+      - light
+      - temperature
+      - conductivity
+      - battery
+  
+  - platform: miflora
+    mac: !secret flower_miflora_yucca_mac
+    name: Yucca elephantipes
+    force_update: false
+    median: 3
+    monitored_conditions:
+      - moisture
+      - light
+      - temperature
+      - conductivity
+      - battery
+  
+  - platform: miflora
+    mac: !secret flower_miflora_phalaenopsis_mac
+    name: Phalaenopsis
+    force_update: false
+    median: 3
+    monitored_conditions:
+      - moisture
+      - light
+      - temperature
+      - conductivity
+      - battery

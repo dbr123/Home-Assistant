@@ -1,0 +1,11 @@
+- name: Dad work
+  radius: !secret location_radius_work_dad
+  latitude: !secret location_lat_work_dad
+  longitude: !secret location_lon_work_dad
+  icon: mdi:briefcase
+
+- name: Mom work
+  radius: !secret location_radius_work_mom
+  latitude: !secret location_lat_work_mom
+  longitude: !secret location_lon_work_mom
+  icon: mdi:medical-bag

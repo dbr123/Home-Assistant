@@ -1,0 +1,43 @@
+#--------------
+# DEVICE TRACKERS
+#--------------
+device_tracker:
+  - platform: owntracks
+
+#--------------
+# GROUP
+#--------------
+group:
+  familypresence:
+    name: Family
+    view: no
+    entities:
+      - device_tracker.pe_phonepe
+      - sensor.commute_to_work_dad
+      - sensor.commute_to_home_dad
+
+#--------------
+# CUSTOMIZE
+#--------------
+homeassistant:
+  customize:
+    sensor.commute_to_work_dad:
+      icon: 'mdi:car'
+    sensor.commute_to_home_dad:
+      icon: 'mdi:home-variant'
+
+#--------------
+# SENSOR
+#--------------
+sensor:
+  - platform: waze_travel_time
+    name: 'Commute to Work dad'
+    origin: !secret waze_home_address
+    destination: !secret waze_work_address_dad
+    region: !secret waze_region
+    
+  - platform: waze_travel_time
+    name: 'Commute to Home dad'
+    origin: !secret waze_work_address_dad
+    destination: !secret waze_home_address
+    region: !secret waze_region

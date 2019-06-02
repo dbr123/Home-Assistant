@@ -1,0 +1,70 @@
+# ------------------
+# HOME
+# ------------------
+default_view:
+  view: yes
+  name: Home
+  icon: mdi:home
+  entities:
+    - group.familypresence
+    - group.weather
+
+# ------------------
+# SECURITY
+# ------------------
+security:
+  view: yes
+  name: Security
+  icon: mdi:security
+  entities:
+    - group.alarm
+
+# ------------------
+# Living room
+# ------------------
+livingroom:
+  view: yes
+  name: Living room
+  icon: mdi:sofa
+  entities:
+    - media_player.living_room_tv
+
+# ------------------
+# Desk office
+# ------------------
+deskoffice:
+  view: yes
+  name: Desk office
+  icon: mdi:desk-lamp
+
+# ------------------
+# Bed rooms
+# ------------------
+bedrooms:
+  view: yes
+  name: Bed rooms
+  icon: mdi:hotel
+  entities:
+    - group.bedrooms_temperature
+
+# ------------------
+# Flowers
+# ------------------
+flower:
+  view: yes
+  name: Flowers
+  icon: mdi:flower
+  entities:
+    - plant.anthurium_andraeanum
+    - plant.stephanotis_floribunda
+
+# ------------------
+# System
+# ------------------
+system:
+  view: yes
+  name: System
+  icon: mdi:settings
+  entities:
+    - group.raspberry
+    - group.speedtest

@@ -1,0 +1,50 @@
+################################################
+#                                              #
+# This is my main configuration.yaml. I use    #
+# a package-based split-configuration format,  #
+# please see the ReadMe files for details on   #
+# how this is done, and thusly how this repo   #
+# is organised in to the various files/folders #
+#                                              #
+################################################
+
+
+homeassistant:
+  name: Home Assistant
+
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  
+  temperature_unit: C
+
+  time_zone: !secret time_zone
+  unit_system: metric
+
+  packages: !include_dir_named packages
+
+# Includes
+group: !include config/groups.yaml
+http: !include config/http.yaml
+logger: !include config/logger.yaml
+mqtt: !include config/mqtt.yaml
+notify: !include config/notify.yaml
+zone: !include config/zones.yaml
+panel_iframe: !include config/panel_iframes.yaml
+telegram_bot: !include config/telegram_bot.yaml
+tts: !include config/tts.yaml
+weather: !include config/weather.yaml
+xiaomi_aqara: !include config/xiaomi_aqara.yaml
+
+# Base configuration
+cloud:
+config:
+conversation:
+frontend:
+hassio:
+history:
+logbook:
+map:
+sun:
+updater:
+wake_on_lan:

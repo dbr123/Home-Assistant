@@ -1,0 +1,33 @@
+#---------
+# HA
+#---------
+homeassistant:
+  customize:
+    input_text.weather:
+      custom_ui_state_card: custom-weather-card
+      config:
+        weather: weather.yweather
+        sun: sun.sun
+
+#---------
+# Frontend
+#---------
+frontend:
+  extra_html_url:
+    - /local/custom_ui/custom-weather-card.html
+  extra_html_url_es5:
+    - /local/custom_ui/custom-weather-card.html
+
+#---------
+# GROUPS
+#---------
+input_text:
+  weather:
+    name: weather 
+
+group:
+  weather:
+    view: no
+    name: Weather
+    entities:
+      - input_text.weather
