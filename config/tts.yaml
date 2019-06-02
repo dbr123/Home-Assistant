@@ -1,2 +1,7 @@
-- platform: google
+- platform: google_translate
   language: fr
+  cache: true
+  cache_dir: /tmp/tts
+  time_memory: 300
+  base_url: !secret config_panel_url
+  service_name: google_say
