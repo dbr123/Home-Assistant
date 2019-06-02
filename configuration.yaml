@@ -25,7 +25,7 @@ homeassistant:
 
 # Includes
 group: !include config/groups.yaml
-http: !include config/http.yaml
+#http: !include config/http.yaml
 logger: !include config/logger.yaml
 mqtt: !include config/mqtt.yaml
 notify: !include config/notify.yaml
@@ -37,6 +37,7 @@ weather: !include config/weather.yaml
 xiaomi_aqara: !include config/xiaomi_aqara.yaml
 
 # Base configuration
+auth_providers: config/auth_providers.yaml
 cloud:
 config:
 conversation:
