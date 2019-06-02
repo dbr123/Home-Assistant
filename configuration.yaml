@@ -22,6 +22,7 @@ homeassistant:
   unit_system: metric
 
   packages: !include_dir_named packages
+  auth_providers: config/auth_providers.yaml
 
 # Includes
 group: !include config/groups.yaml
@@ -37,7 +38,6 @@ weather: !include config/weather.yaml
 xiaomi_aqara: !include config/xiaomi_aqara.yaml
 
 # Base configuration
-auth_providers: config/auth_providers.yaml
 cloud:
 config:
 conversation:

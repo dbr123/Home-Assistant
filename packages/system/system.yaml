@@ -10,8 +10,8 @@ group:
       - sensor.memory_free
       - sensor.last_boot
 
-  speedtest:
-    name: Speedtest
+  speedtestdotnet:
+    name: speedtestdotnet
     view: no
     entities:
       - sensor.speedtest_ping
@@ -22,7 +22,7 @@ group:
 # Sensors
 #---------
 sensor:
-  - platform: speedtest
+  - platform: speedtestdotnet
     monitored_conditions:
       - ping
       - download

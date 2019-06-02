@@ -1,3 +1,4 @@
+- type: homeassistant
 - type: trusted_networks
       trusted_networks:
         - 192.168.0.0/24
